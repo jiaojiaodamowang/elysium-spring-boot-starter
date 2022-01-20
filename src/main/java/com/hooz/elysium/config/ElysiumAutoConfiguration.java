@@ -1,7 +1,9 @@
 package com.hooz.elysium.config;
 
+import com.hooz.elysium.aop.MonitorAspect;
 import com.hooz.elysium.properties.ElysiumProperties;
 import com.hooz.elysium.service.ElysiumService;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -21,5 +23,10 @@ public class ElysiumAutoConfiguration {
     @Bean
     public ElysiumService elysiumService() {
         return new ElysiumService();
+    }
+
+    @Bean
+    public MonitorAspect monitorAspect() {
+        return new MonitorAspect();
     }
 }

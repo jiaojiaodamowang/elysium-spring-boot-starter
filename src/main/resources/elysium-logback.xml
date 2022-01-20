@@ -2,7 +2,7 @@
 <configuration>
     <contextName>elysium</contextName>
 
-    <property name="pattern" value="%d{yyyy-MM-dd:HH:mm:ss.SSS} [%t] %p [%c] : %msg%n" />
+    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %p [%c] : %msg%n" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <target>System.out</target>
@@ -11,7 +11,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.hooz.elysium" level="INFO" additivity="false">
+    <logger name="com.hooz.elysium" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 
