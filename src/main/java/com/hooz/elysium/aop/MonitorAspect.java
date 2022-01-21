@@ -1,6 +1,7 @@
 package com.hooz.elysium.aop;
 
 import com.hooz.elysium.core.TypedParam;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -58,8 +59,10 @@ public class MonitorAspect {
     public void afterReturning() {}
 
     @AfterThrowing(value = "methodPointcut()", throwing = "ex")
-    public void afterThrowing(Throwable ex) {
-        LOGGER.error("[Elysium Monitor]: exception info: {}", ex.getMessage());
+    public void afterThrowing(JoinPoint jp, Throwable ex) {
+        String className = jp.getTarget().getClass().getName();
+        String methodName = jp.getSignature().getName();
+        LOGGER.error("[Elysium Monitor]: {}.{}() exception msg:", className, methodName, ex);
     }
 
 }
